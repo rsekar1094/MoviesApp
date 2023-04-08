@@ -38,6 +38,7 @@ private extension MoviesListController {
     
     func listenToSelectedMovie() {
         viewModel.$selectedMovie
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] selectedMovie in
                 guard let self else { return }
                 
@@ -51,6 +52,7 @@ private extension MoviesListController {
     func listenToNextButtonEnabled() {
         viewModel.$selectedMovie
             .map { $0 != nil }
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] isEnabled in
                 guard let self else { return }
                 
@@ -62,6 +64,7 @@ private extension MoviesListController {
     
     func listenToAlertData() {
         viewModel.alertToShow
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] alertData in
                 guard let self else { return }
                 self.show(alert: alertData)

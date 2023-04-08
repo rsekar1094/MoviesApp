@@ -7,11 +7,13 @@
 
 import Foundation
 
+// MARK: - MoviesRepository
 protocol MoviesRepository {
     func getAllMovies() async throws -> [Movie]
     func getFavoriteMovies() async throws -> [FavoriteMovie]
 }
 
+// MARK: - MoviesRepositoryImpl
 final class MoviesRepositoryImpl: MoviesRepository {
     
     @Inject
@@ -27,6 +29,7 @@ final class MoviesRepositoryImpl: MoviesRepository {
         return data.results
     }
     
+    // MARK: - ApiPath
     private struct ApiPath {
         static let movies = "movies/list"
         static let favorites = "movies/favorites"

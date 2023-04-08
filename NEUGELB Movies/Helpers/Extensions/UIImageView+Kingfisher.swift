@@ -8,7 +8,6 @@
 import Kingfisher
 import UIKit
 
-
 typealias ImageLoadCompletion = (Result<UIImage, UIImageView.LoadingError>) -> Void
 
 extension UIImageView {

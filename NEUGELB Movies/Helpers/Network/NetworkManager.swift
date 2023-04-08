@@ -7,12 +7,13 @@
 
 import Foundation
 
+// MARK: - NetworkManaging
 protocol NetworkManaging {
     func fetch<T: Decodable>(path: String) async throws -> T
 }
 
-class URLSessionNetworkManager: NetworkManaging {
-    
+// MARK: - URLSessionNetworkManager
+final class URLSessionNetworkManager: NetworkManaging {
     @Inject
     var config: Config
     
@@ -33,10 +34,11 @@ class URLSessionNetworkManager: NetworkManaging {
     }
 }
 
+// MARK: - NetworkError
 enum NetworkError: LocalizedError {
     case invalidUrl
     case invalidResponse
-
+    
     var errorDescription: String? {
         switch self {
         case .invalidUrl:

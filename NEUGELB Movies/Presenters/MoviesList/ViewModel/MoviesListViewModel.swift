@@ -44,6 +44,7 @@ class MoviesListViewModel {
             do {
                 try await self.fetchMovieData()
             } catch let error {
+                self.datasource = []
                 alertToShow.send(.init(title: NSLocalizedString("Error", comment: ""),
                                        message: error.localizedDescription,
                                        actions: [.init(title: NSLocalizedString("Ok", comment: ""),
@@ -71,8 +72,9 @@ private extension MoviesListViewModel {
         var dataSource: [MovieListSection] = []
         
         append(movies: movieData.favoriteMovies,for: .favorites, in: &dataSource)
-        append(movies: movieData.toWatchMovies,for: .toWatch, in: &dataSource)
         append(movies: movieData.watchedMovies,for: .watched, in: &dataSource)
+        append(movies: movieData.toWatchMovies,for: .toWatch, in: &dataSource)
+        
         self.datasource = dataSource
     }
     

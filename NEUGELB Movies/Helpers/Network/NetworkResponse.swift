@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - NetworkResponse
 struct NetworkResponse<T: Decodable>: Decodable {
     let results: T
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+// MARK: - Inject
 @propertyWrapper
 struct Inject<T> {
     let wrappedValue: T
@@ -17,6 +17,7 @@ struct Inject<T> {
     }
 }
 
+// MARK: - Resolver
 class Resolver {
     private var storage = [String: AnyObject]()
     

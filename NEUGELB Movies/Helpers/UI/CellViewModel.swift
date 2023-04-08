@@ -7,12 +7,14 @@
 
 import Foundation
 
+// MARK: - CellViewModel
 enum CellViewModel<T : Identifiable>: Hashable,
                                       Equatable,
                                       Identifiable {
     case loading(id: String)
     case data(value: T)
     
+    // MARK: - Properties
     var id: String {
         switch self {
         case .loading(let id):
@@ -22,6 +24,16 @@ enum CellViewModel<T : Identifiable>: Hashable,
         }
     }
     
+    var isLoader: Bool {
+        switch self {
+        case .loading:
+            return true
+        case .data:
+            return false
+        }
+    }
+    
+    // MARK: - Equatable
     static func == (lhs: CellViewModel<T>, rhs: CellViewModel<T>) -> Bool {
         switch (lhs, rhs) {
         case (.loading(let lId),.loading(let rId)):
@@ -33,16 +45,8 @@ enum CellViewModel<T : Identifiable>: Hashable,
         }
     }
     
+    // MARK: - Hashable
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
-    }
-    
-    var isLoader: Bool {
-        switch self {
-        case .loading:
-            return true
-        case .data:
-            return false
-        }
     }
 }

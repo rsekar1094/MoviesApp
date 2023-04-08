@@ -7,10 +7,12 @@
 
 import UIKit
 
+// MARK: - Alertable
 protocol Alertable {
     func show(alert: AlertData)
 }
 
+// MARK: - Alertable + UIViewController
 extension Alertable where Self: UIViewController {
     
     func show(alert: AlertData) {

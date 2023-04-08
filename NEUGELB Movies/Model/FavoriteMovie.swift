@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - FavoriteMovie
 struct FavoriteMovie: Codable {
     let id: Int
 }

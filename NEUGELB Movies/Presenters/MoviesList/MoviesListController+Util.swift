@@ -20,7 +20,7 @@ extension MoviesListController {
         
         if animate {
             UIView.animate(withDuration: visible ? 0.2 : 0.5,
-                           delay: visible ? 0.5 : 0,
+                           delay: visible ? 0.55 : 0,
                            animations: {
                 self.view.setNeedsLayout()
                 self.view.layoutIfNeeded()

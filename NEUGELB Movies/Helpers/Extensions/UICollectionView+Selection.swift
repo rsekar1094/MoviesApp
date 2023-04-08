@@ -7,7 +7,6 @@
 
 import UIKit
 extension UICollectionView {
-    
     func selectItems(at indexPaths: [IndexPath], animated: Bool = false) {
         indexPaths.forEach {
             selectItem(at: $0, animated: animated, scrollPosition: .init(rawValue: 0))
