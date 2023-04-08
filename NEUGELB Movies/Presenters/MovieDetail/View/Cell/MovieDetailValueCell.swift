@@ -6,8 +6,11 @@
 //
 
 import UIKit
+
+// MARK: - MovieDetailValueCell
 class MovieDetailValueCell: UICollectionViewCell {
     
+    // MARK: - Views
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +31,7 @@ class MovieDetailValueCell: UICollectionViewCell {
         return label
     }()
     
+    // MARK: - Initializers
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setUp()
@@ -38,7 +42,15 @@ class MovieDetailValueCell: UICollectionViewCell {
         setUp()
     }
     
-    private func setUp() {
+    // MARK: - Bind
+    func bind(title: String, value: String) {
+        titleLabel.text = title
+        valueLabel.text = value
+    }
+}
+// MARK: - Setup
+private extension MovieDetailValueCell {
+    func setUp() {
         contentView.backgroundColor = .clear
         backgroundColor = .clear
         
@@ -56,11 +68,5 @@ class MovieDetailValueCell: UICollectionViewCell {
             valueLabel.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 10),
             valueLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -10)
         ])
-    }
-    
-
-    func bind(title: String, value: String) {
-        titleLabel.text = title
-        valueLabel.text = value
     }
 }

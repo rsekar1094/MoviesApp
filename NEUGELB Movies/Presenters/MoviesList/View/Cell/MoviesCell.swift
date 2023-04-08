@@ -6,7 +6,11 @@
 //
 
 import UIKit
+
+// MARK: - MoviesCell
 class MoviesCell: UICollectionViewCell {
+    
+    // MARK: - Views
     private lazy var backdropImageView: BackdropImageView = {
         let imageView = BackdropImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -15,8 +19,7 @@ class MoviesCell: UICollectionViewCell {
         imageView.layer.cornerRadius = config.backdropCornerRadius
         return imageView
     }()
-    
-    
+
     private lazy var movieContainer: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,13 +45,16 @@ class MoviesCell: UICollectionViewCell {
         return label
     }()
     
+    // MARK: - Properties
     var config: MoviesCellConfig { return Large.shared }
+    
     override var isSelected: Bool {
         didSet {
             updateSelection()
         }
     }
     
+    // MARK: - Initializers
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setUp()
@@ -59,7 +65,29 @@ class MoviesCell: UICollectionViewCell {
         setUp()
     }
     
-    private func setUp() {
+    // MARK: - Bind
+    func bind(with viewModel: CellViewModel<MovieCellViewModel>) {
+        switch viewModel {
+        case .loading:
+            movieNameLabel.text = ""
+            movieImageView.image = nil
+            backdropImageView.image = nil
+        case .data(let movie):
+            movieNameLabel.text = movie.name
+            movieImageView.setImage(for: movie.posterImagePath)
+            backdropImageView.setImage(for: movie.backdropImagePath)
+        }
+        updateSelection()
+    }
+
+    private func updateSelection() {
+        contentView.layer.borderWidth = isSelected ? 5 : 0
+    }
+    
+}
+// MARK: - Setup
+private extension MoviesCell {
+    func setUp() {
         contentView.backgroundColor = .clear
         backgroundColor = .clear
         contentView.layer.cornerRadius = config.backdropCornerRadius
@@ -75,6 +103,10 @@ class MoviesCell: UICollectionViewCell {
         
         imageViewContainer.addSubview(movieImageView)
         
+        setUpConstraints(imageViewContainer: imageViewContainer)
+    }
+    
+    func setUpConstraints(imageViewContainer: UIView) {
         var constraints: [NSLayoutConstraint] = [
             backdropImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             backdropImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -112,29 +144,19 @@ class MoviesCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate(constraints)
     }
-    
-
-    func bind(with viewModel: CellViewModel<MovieCellViewModel>) {
-        switch viewModel {
-        case .loading:
-            movieNameLabel.text = ""
-            movieImageView.image = nil
-            backdropImageView.image = nil
-        case .data(let movie):
-            movieNameLabel.text = movie.name
-            movieImageView.setImage(for: movie.posterImagePath)
-            backdropImageView.setImage(for: movie.backdropImagePath)
-        }
-        updateSelection()
-    }
-    
-    
-    private func updateSelection() {
-        contentView.layer.borderWidth = isSelected ? 5 : 0
-    }
-    
 }
 
+// MARK: - MoviesCellConfig
+protocol MoviesCellConfig {
+    var movieContainerAxis: NSLayoutConstraint.Axis { get }
+    var titleAlignment: NSTextAlignment { get }
+    var movieImageSize: CGFloat { get }
+    var containerSpace: CGFloat { get }
+    var paddingAroundContainer: CGFloat { get }
+    var backdropCornerRadius: CGFloat { get }
+}
+
+// MARK: - MoviesCell + Config
 extension MoviesCell {
     struct Small: MoviesCellConfig {
         static let shared = Self()
@@ -159,13 +181,4 @@ extension MoviesCell {
         let backdropCornerRadius: CGFloat = 12
         let estimatedHeight: CGFloat = 94
     }
-}
-
-protocol MoviesCellConfig {
-    var movieContainerAxis: NSLayoutConstraint.Axis { get }
-    var titleAlignment: NSTextAlignment { get }
-    var movieImageSize: CGFloat { get }
-    var containerSpace: CGFloat { get }
-    var paddingAroundContainer: CGFloat { get }
-    var backdropCornerRadius: CGFloat { get }
 }

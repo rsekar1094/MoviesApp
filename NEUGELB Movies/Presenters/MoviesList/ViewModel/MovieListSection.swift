@@ -7,6 +7,14 @@
 
 import Foundation
 
+// MARK: - MovieListSectionType
+enum MovieListSectionType {
+    case favorites
+    case watched
+    case toWatch
+}
+
+// MARK: - MovieListSection
 enum MovieListSection: Hashable {
     case favorites([MovieListItem])
     case watched([MovieListItem])
@@ -44,6 +52,7 @@ enum MovieListSection: Hashable {
     }
 }
 
+// MARK: - MovieListItem
 enum MovieListItem: Hashable {
     case favotieMovie(CellViewModel<MovieCellViewModel>)
     case movie(CellViewModel<MovieCellViewModel>)

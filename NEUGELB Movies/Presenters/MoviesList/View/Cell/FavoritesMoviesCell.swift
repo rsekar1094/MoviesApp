@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - FavoritesMoviesCell
 class FavoritesMoviesCell: MoviesCell {
     override var config: MoviesCellConfig { Small.shared }
 }

@@ -7,11 +7,14 @@
 
 import UIKit
 
+// MARK: - MovieDetailViewController
 class MovieDetailViewController: UIViewController {
     
+    // MARK: - Properties
     private let viewModel: MovieDetailViewModel
     private var dataSource: UICollectionViewDiffableDataSource<Int, MovieDetailItem>!
     
+    // MARK: - Views
     private lazy var moviesListView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: createMovieListLayout())
@@ -24,6 +27,7 @@ class MovieDetailViewController: UIViewController {
         return collectionView
     }()
     
+    // MARK: - Initializers
     init(viewModel: MovieDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -33,9 +37,15 @@ class MovieDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUp()
+    }
+}
+// MARK: - Details
+private extension MovieDetailViewController {
+    func setUp() {
         title = NSLocalizedString("Movies Details", comment: "")
         view.addSubview(moviesListView)
         NSLayoutConstraint.activate([
@@ -45,6 +55,11 @@ class MovieDetailViewController: UIViewController {
             moviesListView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
         
+        assignDatasource()
+        reload()
+    }
+    
+    func assignDatasource() {
         dataSource = UICollectionViewDiffableDataSource<Int, MovieDetailItem>(collectionView: moviesListView) { collectionView, indexPath, item in
             switch item {
             case .header(let data):
@@ -57,14 +72,16 @@ class MovieDetailViewController: UIViewController {
                 return cell
             }
         }
-        
+    }
+    
+    func reload() {
         var snapshot = NSDiffableDataSourceSnapshot<Int, MovieDetailItem>()
         snapshot.appendSections([0])
         snapshot.appendItems(viewModel.items,toSection: 0)
         self.dataSource.apply(snapshot, animatingDifferences: false)
     }
-    
 }
+// MARK: - Movies Layout
 private extension MovieDetailViewController {
     func createMovieListLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout() { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in

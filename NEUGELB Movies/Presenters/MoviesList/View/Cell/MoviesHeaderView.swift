@@ -6,7 +6,11 @@
 //
 
 import UIKit
+
+// MARK: - MoviesHeaderview
 class MoviesHeaderview: UICollectionReusableView {
+    
+    // MARK: - Views
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -17,6 +21,7 @@ class MoviesHeaderview: UICollectionReusableView {
         return label
     }()
     
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -27,10 +32,12 @@ class MoviesHeaderview: UICollectionReusableView {
         setUp()
     }
     
+    // MARK: - Bind
     func bind(with headerText: String) {
         headerLabel.text = headerText
     }
     
+    // MARK: - Setup
     private func setUp() {
         addSubview(headerLabel)
         NSLayoutConstraint.activate([

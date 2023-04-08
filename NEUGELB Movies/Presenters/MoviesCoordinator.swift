@@ -7,28 +7,40 @@
 
 import UIKit
 
+// MARK: - MoviesCoordinator
 class MoviesCoordinator {
     
+    // MARK: - Properties
     private weak var navigationController: UINavigationController?
     
+    
     func start(with window: UIWindow?) {
-        let moviesListViewModel = MoviesListViewModel { action in
-            switch action {
-            case .openDetail(let movie):
-                let controller = MovieDetailViewController(viewModel: .init(movie: movie))
-                controller.navigationItem.largeTitleDisplayMode = .never
-                self.navigationController?.pushViewController(controller, animated: true)
-            }
-        }
-        let controller = MoviesListController(viewModel: moviesListViewModel)
+        let controller = MoviesListController(viewModel: getMovieListViewModel())
         controller.navigationItem.largeTitleDisplayMode = .always
         let nav = UINavigationController(rootViewController: controller)
         nav.navigationBar.prefersLargeTitles = true
         nav.view.backgroundColor = .white
         window?.rootViewController = nav
+        
         self.navigationController = nav
     }
-    
-    
-    
+}
+// MARK: - MoviesCoordinator + MovieListViewModel
+private extension MoviesCoordinator {
+    func getMovieListViewModel() -> MoviesListViewModel {
+        return MoviesListViewModel { action in
+            switch action {
+            case .openDetail(let movie):
+                self.openMovieDetail(for: movie)
+            }
+        }
+    }
+}
+// MARK: - MoviesCoordinator + MovieDetail
+private extension MoviesCoordinator {
+    func openMovieDetail(for movie: Movie) {
+        let controller = MovieDetailViewController(viewModel: .init(movie: movie))
+        controller.navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 }

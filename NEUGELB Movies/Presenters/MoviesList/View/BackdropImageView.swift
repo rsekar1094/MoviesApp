@@ -6,8 +6,11 @@
 //
 
 import UIKit
+
+// MARK: - Setup
 class BackdropImageView: UIImageView {
     
+    // MARK: - Views
     private lazy var overlay: CALayer = {
         let layer = CALayer()
         layer.backgroundColor = UIColor.black.withAlphaComponent(0.75).cgColor
@@ -15,6 +18,7 @@ class BackdropImageView: UIImageView {
         return layer
     }()
     
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -25,12 +29,14 @@ class BackdropImageView: UIImageView {
         setUp()
     }
     
+    // MARK: - Lifecycle
     override func layoutSubviews() {
         super.layoutSubviews()
         
         overlay.frame = bounds
     }
     
+    // MARK: - Setup
     private func setUp() {
         layer.addSublayer(overlay)
     }

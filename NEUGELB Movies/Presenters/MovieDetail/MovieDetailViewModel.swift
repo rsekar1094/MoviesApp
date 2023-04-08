@@ -6,21 +6,29 @@
 //
 
 import Foundation
+
+// MARK: - MovieDetailViewModel
 class MovieDetailViewModel {
     
+    // MARK: - Properties
     let items: [MovieDetailItem]
     
+    // MARK: - Initializers
     init(movie: Movie,
          moviesUsecase: MoviesUsecase = MoviesUsecaseImpl()) {
         self.items = Self.getItems(for: movie, movieUseCase: moviesUsecase)
     }
-    
-    private static func getItems(for movie: Movie, movieUseCase: MoviesUsecase) -> [MovieDetailItem] {
+}
+// MARK: - DataSource
+private extension MovieDetailViewModel {
+    static func getItems(for movie: Movie,
+                         movieUseCase: MoviesUsecase) -> [MovieDetailItem] {
         var items: [MovieDetailItem] = []
         
         items.append(.header(.init(movie: movie,
                                    imagePathResolver: movieUseCase.getImageFullPath(for:))))
         
+        /// If description is empty then won't add it in the items
         if !movie.overview.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             items.append(.data(title: NSLocalizedString("Description", comment: ""),
                                value: movie.overview))
@@ -37,6 +45,7 @@ class MovieDetailViewModel {
 }
 
 
+// MARK: - MovieDetailItem
 enum MovieDetailItem: Hashable {
     case header(MovieCellViewModel)
     case data(title: String, value: String)
