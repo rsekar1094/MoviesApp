@@ -30,6 +30,10 @@ final class URLSessionNetworkManager: NetworkManaging {
         }
         
         let decodedData = try JSONDecoder().decode(T.self, from: data)
+
+        //TODO: Sleep just for showing the shimmering effect for demo, becuase most of times data returns very fast
+        try await Task.sleep(until: .now + .seconds(1.5), clock: .continuous)
+
         return decodedData
     }
 }

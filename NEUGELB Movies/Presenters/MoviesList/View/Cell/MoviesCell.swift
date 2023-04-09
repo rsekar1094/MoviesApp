@@ -64,24 +64,36 @@ class MoviesCell: UICollectionViewCell {
         super.init(frame: frame)
         setUp()
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        reset()
+        updateSelection()
+    }
     
     // MARK: - Bind
     func bind(with viewModel: CellViewModel<MovieCellViewModel>) {
         switch viewModel {
         case .loading:
-            movieNameLabel.text = ""
-            movieImageView.image = nil
-            backdropImageView.image = nil
+            reset()
         case .data(let movie):
             movieNameLabel.text = movie.name
             movieImageView.setImage(for: movie.posterImagePath)
             backdropImageView.setImage(for: movie.backdropImagePath)
+            backdropImageView.currentState = .loaded
         }
         updateSelection()
     }
 
     private func updateSelection() {
         contentView.layer.borderWidth = isSelected ? 5 : 0
+    }
+
+    private func reset() {
+        movieNameLabel.text = ""
+        movieImageView.image = nil
+        backdropImageView.image = nil
+        backdropImageView.currentState = .shimmering
     }
     
 }
