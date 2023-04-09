@@ -20,9 +20,9 @@ class MoviesListViewModel {
     let actionHandler: MoviesListActionHandler
     let moviesUsecase: MoviesUsecase
     let alertToShow: PassthroughSubject<AlertData,Never> = .init()
-    
+
     @Published
-    var selectedMovie: MovieCellViewModel?
+    private(set) var selectedMovie: MovieCellViewModel?
     
     @Published
     var datasource: [MovieListSection] = []
@@ -41,15 +41,18 @@ class MoviesListViewModel {
     
     func requestToRefresh() {
         Task {
-            do {
-                try await self.fetchMovieData()
-            } catch let error {
-                self.datasource = []
-                alertToShow.send(.init(title: NSLocalizedString("Error", comment: ""),
-                                       message: error.localizedDescription,
-                                       actions: [.init(title: NSLocalizedString("Ok", comment: ""),
-                                                       action: { })]))
-            }
+            await refreshData()
+        }
+    }
+
+    func refreshData() async {
+        do {
+            try await self.fetchMovieData()
+        } catch let error {
+            self.datasource = []
+            alertToShow.send(.init(title: NSLocalizedString("Error", comment: ""),
+                                   message: error.localizedDescription,
+                                   actions: [.init(title: NSLocalizedString("Ok", comment: ""))]))
         }
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Movie
-struct Movie: Codable, Comparable, Hashable {
+struct Movie: Codable, Comparable, Hashable, Equatable {
     let id: Int
     let title: String
     let originalLanguage: Language
@@ -34,7 +34,7 @@ struct Movie: Codable, Comparable, Hashable {
         hasher.combine(id)
     }
     
-    static func == (lhs: Movie, rhs: Movie) -> Bool {
+    public static func == (_ lhs: Movie,_ rhs: Movie) -> Bool {
         return lhs.id == rhs.id
     }
     
@@ -57,5 +57,10 @@ struct Language: Codable {
         let code = try container.decode(String.self)
         self.code = code
         self.name = Locale(identifier: code).localizedString(forLanguageCode: code)?.localizedCapitalized ?? code
+    }
+
+    init(code: String, name: String) {
+        self.code = code
+        self.name = name
     }
 }

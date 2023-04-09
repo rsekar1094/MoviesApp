@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "E00A29D9-B9CA-4D83-BB26-B28B2A7F79F5"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45C0AE04-CE01-4ABC-BD31-1606028DFB3B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NEUGELB Movies/UseCase/MoviesUsecase.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "getAllMoviesData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D22FCFC-8D65-4493-8F6A-647F798FF26F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NEUGELB Movies/UseCase/MoviesUsecase.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "getAllMoviesData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C800FE4-2EEF-4D26-88EB-B9C1E50C951E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NEUGELB Movies/UseCase/MoviesUsecase.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getAllMoviesData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4C800FE4-2EEF-4D26-88EB-B9C1E50C951E - 7fb5a3ccd7372b32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for NEUGELB_Movies.MoviesUsecaseImpl.getAllMoviesData() async throws -&gt; NEUGELB_Movies.MoviesData"
+                  moduleName = "NEUGELB Movies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rrajendran/Projects/Others/Moviesapp/NEUGELB%20Movies/UseCase/MoviesUsecase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "324">
+               </Location>
+               <Location
+                  uuid = "4C800FE4-2EEF-4D26-88EB-B9C1E50C951E - ebbd6431c2ebdf0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for NEUGELB_Movies.MoviesUsecaseImpl.getAllMoviesData() async throws -&gt; NEUGELB_Movies.MoviesData"
+                  moduleName = "NEUGELB Movies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rrajendran/Projects/Others/Moviesapp/NEUGELB%20Movies/UseCase/MoviesUsecase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "4C800FE4-2EEF-4D26-88EB-B9C1E50C951E - edd247d76316ffc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for NEUGELB_Movies.MoviesUsecaseImpl.getAllMoviesData() async throws -&gt; NEUGELB_Movies.MoviesData"
+                  moduleName = "NEUGELB Movies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rrajendran/Projects/Others/Moviesapp/NEUGELB%20Movies/UseCase/MoviesUsecase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "4C800FE4-2EEF-4D26-88EB-B9C1E50C951E - 9b2cf385474a21e2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) await resume partial function for NEUGELB_Movies.MoviesUsecaseImpl.getAllMoviesData() async throws -&gt; NEUGELB_Movies.MoviesData"
+                  moduleName = "NEUGELB Movies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rrajendran/Projects/Others/Moviesapp/NEUGELB%20Movies/UseCase/MoviesUsecase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "4C800FE4-2EEF-4D26-88EB-B9C1E50C951E - c066a4ee1532b3be"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for NEUGELB_Movies.MoviesUsecaseImpl.getAllMoviesData() async throws -&gt; NEUGELB_Movies.MoviesData"
+                  moduleName = "NEUGELB Movies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rrajendran/Projects/Others/Moviesapp/NEUGELB%20Movies/UseCase/MoviesUsecase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "4C800FE4-2EEF-4D26-88EB-B9C1E50C951E - 7b3ae55765b3d59f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for NEUGELB_Movies.MoviesUsecaseImpl.getAllMoviesData() async throws -&gt; NEUGELB_Movies.MoviesData"
+                  moduleName = "NEUGELB Movies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rrajendran/Projects/Others/Moviesapp/NEUGELB%20Movies/UseCase/MoviesUsecase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "4C800FE4-2EEF-4D26-88EB-B9C1E50C951E - 938e2590b43cf678"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for NEUGELB_Movies.MoviesUsecaseImpl.getAllMoviesData() async throws -&gt; NEUGELB_Movies.MoviesData"
+                  moduleName = "NEUGELB Movies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rrajendran/Projects/Others/Moviesapp/NEUGELB%20Movies/UseCase/MoviesUsecase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8FD91E65-FCAD-41AE-AB86-63F141998D11"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NEUGELB Movies/UseCase/MoviesUsecase.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "getAllMoviesData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8FD91E65-FCAD-41AE-AB86-63F141998D11 - c066a4ee1532bc70"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for NEUGELB_Movies.MoviesUsecaseImpl.getAllMoviesData() async throws -&gt; NEUGELB_Movies.MoviesData"
+                  moduleName = "NEUGELB Movies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rrajendran/Projects/Others/Moviesapp/NEUGELB%20Movies/UseCase/MoviesUsecase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "8FD91E65-FCAD-41AE-AB86-63F141998D11 - df746529ad8cc9db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (inout Swift.Dictionary&lt;Swift.Int, NEUGELB_Movies.Movie&gt;, NEUGELB_Movies.Movie) -&gt; () in NEUGELB_Movies.MoviesUsecaseImpl.getAllMoviesData() async throws -&gt; NEUGELB_Movies.MoviesData"
+                  moduleName = "NEUGELB Movies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rrajendran/Projects/Others/Moviesapp/NEUGELB%20Movies/UseCase/MoviesUsecase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

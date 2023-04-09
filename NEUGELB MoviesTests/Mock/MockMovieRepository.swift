@@ -42,5 +42,4 @@ class MockMovieRepository: MoviesRepository {
         case success1
         case success2
     }
-    
 }

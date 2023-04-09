@@ -15,6 +15,12 @@ struct AlertData {
     
     // MARK: - Action
     struct Action {
+        internal init(title: String,
+                      action: @escaping () -> Void = { }) {
+            self.title = title
+            self.action = action
+        }
+
         let title: String
         let action: ()->Void
     }
