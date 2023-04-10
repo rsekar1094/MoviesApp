@@ -12,14 +12,16 @@ class MoviesCoordinator {
     
     // MARK: - Properties
     private weak var navigationController: UINavigationController?
-    
+
+    @Inject
+    private var theme: Theme
     
     func start(with window: UIWindow?) {
         let controller = MoviesListController(viewModel: getMovieListViewModel())
         controller.navigationItem.largeTitleDisplayMode = .always
         let nav = UINavigationController(rootViewController: controller)
         nav.navigationBar.prefersLargeTitles = true
-        nav.view.backgroundColor = .white
+        nav.view.backgroundColor = theme.color.background
         window?.rootViewController = nav
         
         self.navigationController = nav

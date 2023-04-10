@@ -39,14 +39,17 @@ class MoviesCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = theme.color.white
+        label.font = theme.font.listTitle
         label.textAlignment = config.titleAlignment
         return label
     }()
     
     // MARK: - Properties
     var config: MoviesCellConfig { return Large.shared }
+
+    @Inject
+    private var theme: Theme
     
     override var isSelected: Bool {
         didSet {
@@ -103,7 +106,7 @@ private extension MoviesCell {
         contentView.backgroundColor = .clear
         backgroundColor = .clear
         contentView.layer.cornerRadius = config.backdropCornerRadius
-        contentView.layer.borderColor = UIColor.systemBlue.cgColor
+        contentView.layer.borderColor = theme.color.primaryTint.cgColor
         
         contentView.addSubview(backdropImageView)
         contentView.addSubview(movieContainer)
@@ -172,25 +175,31 @@ protocol MoviesCellConfig {
 extension MoviesCell {
     struct Small: MoviesCellConfig {
         static let shared = Self()
-        
+
+        @Inject
+        private var theme: Theme
+
         let movieContainerAxis: NSLayoutConstraint.Axis = .vertical
         let titleAlignment: NSTextAlignment = .center
-        let movieImageSize: CGFloat = 80
-        let containerSpace: CGFloat = 8
-        let paddingAroundContainer: CGFloat = 8
-        let backdropCornerRadius: CGFloat = 8
-        let estimatedHeight: CGFloat = 150
+        var movieImageSize: CGFloat { return theme.dimension.base(9.5) }
+        var containerSpace: CGFloat { return theme.dimension.base(0.6) }
+        var paddingAroundContainer: CGFloat { return theme.dimension.paddingS }
+        var backdropCornerRadius: CGFloat { return theme.dimension.cornerRadius(1) }
+        var estimatedHeight: CGFloat { return movieImageSize + (2 * paddingAroundContainer)  + theme.dimension.base(6) }
     }
     
     struct Large: MoviesCellConfig {
         static let shared = Self()
-        
+
+        @Inject
+        private var theme: Theme
+
         let movieContainerAxis: NSLayoutConstraint.Axis = .horizontal
         let titleAlignment: NSTextAlignment = .left
-        let movieImageSize: CGFloat = 70
-        let containerSpace: CGFloat = 12
-        let paddingAroundContainer: CGFloat = 12
-        let backdropCornerRadius: CGFloat = 12
-        let estimatedHeight: CGFloat = 94
+        var movieImageSize: CGFloat { return theme.dimension.base(9) }
+        var containerSpace: CGFloat { return theme.dimension.base(1.5) }
+        var paddingAroundContainer: CGFloat { return theme.dimension.base(1.2) }
+        var backdropCornerRadius: CGFloat { return theme.dimension.cornerRadius(1.5) }
+        var estimatedHeight: CGFloat { return movieImageSize + (2 * paddingAroundContainer) }
     }
 }

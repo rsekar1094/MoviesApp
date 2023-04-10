@@ -25,7 +25,7 @@ class MoviesListViewModel {
     private(set) var selectedMovie: MovieCellViewModel?
     
     @Published
-    var datasource: [MovieListSection] = []
+    private(set) var datasource: [MovieListSection] = []
     
     // MARK: - Initializers
     init(moviesUsecase: MoviesUsecase = MoviesUsecaseImpl(),

@@ -14,6 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         Resolver.shared.add(ConfigImpl(),key: String(reflecting: Config.self))
+        Resolver.shared.add(ThemeColorImpl(),key: String(reflecting: ThemeColor.self))
+        Resolver.shared.add(ThemeFontImpl(),key: String(reflecting: ThemeFont.self))
+        Resolver.shared.add(ThemeDimensionImpl(),key: String(reflecting: ThemeDimension.self))
+        Resolver.shared.add(Theme(),key: String(reflecting: Theme.self))
         Resolver.shared.add(URLSessionNetworkManager(),key: String(reflecting: NetworkManaging.self))
         Resolver.shared.add(MoviesRepositoryImpl(),key: String(reflecting: MoviesRepository.self))
         return true

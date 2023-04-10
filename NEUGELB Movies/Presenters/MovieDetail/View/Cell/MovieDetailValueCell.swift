@@ -9,14 +9,18 @@ import UIKit
 
 // MARK: - MovieDetailValueCell
 class MovieDetailValueCell: UICollectionViewCell {
-    
+
+    // MARK: - Properties
+    @Inject
+    private var theme: Theme
+
     // MARK: - Views
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = theme.color.primaryText
+        label.font = theme.font.listTitle
         label.textAlignment = .left
         return label
     }()
@@ -25,8 +29,8 @@ class MovieDetailValueCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.textColor = theme.color.primaryText
+        label.font = theme.font.listValue
         label.textAlignment = .left
         return label
     }()
@@ -60,13 +64,16 @@ private extension MovieDetailValueCell {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5,
-                                              constant: -8),
+                                              constant: -theme.dimension.paddingS),
             titleLabel.topAnchor.constraint(equalTo: valueLabel.topAnchor),
             
-            valueLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: -8),
+            valueLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor,
+                                                constant: theme.dimension.paddingS),
             valueLabel.widthAnchor.constraint(equalTo: titleLabel.widthAnchor),
-            valueLabel.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 10),
-            valueLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -10)
+            valueLabel.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                            constant: theme.dimension.paddingM),
+            valueLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
+                                               constant: -theme.dimension.paddingM)
         ])
     }
 }

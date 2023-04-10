@@ -13,14 +13,17 @@ class MovieDetailViewController: UIViewController {
     // MARK: - Properties
     private let viewModel: MovieDetailViewModel
     private var dataSource: UICollectionViewDiffableDataSource<Int, MovieDetailItem>!
-    
+
+    @Inject
+    private var theme: Theme
+
     // MARK: - Views
     private lazy var moviesListView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: createMovieListLayout())
         collectionView.register(MoviesCell.self)
         collectionView.register(MovieDetailValueCell.self)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.allowsSelection = false
@@ -84,13 +87,14 @@ private extension MovieDetailViewController {
 // MARK: - Movies Layout
 private extension MovieDetailViewController {
     func createMovieListLayout() -> UICollectionViewCompositionalLayout {
+        let theme = self.theme
         let layout = UICollectionViewCompositionalLayout() { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
             configuration.showsSeparators = false
            
             let section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
-            section.contentInsets.leading = self.view.safeAreaInsets.left + 16
-            section.contentInsets.trailing = self.view.safeAreaInsets.right + 16
+            section.contentInsets.leading = self.view.safeAreaInsets.left + theme.dimension.paddingM
+            section.contentInsets.trailing = self.view.safeAreaInsets.right + theme.dimension.paddingM
             return section
         }
         return layout

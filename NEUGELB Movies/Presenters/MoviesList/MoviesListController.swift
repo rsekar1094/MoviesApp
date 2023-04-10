@@ -16,6 +16,9 @@ class MoviesListController: UIViewController, Alertable {
     var dataSource: UICollectionViewDiffableDataSource<MovieListSection, MovieListItem>!
     var subscribers: [AnyCancellable] = []
     weak var nextButtonBottomConstraint: NSLayoutConstraint?
+
+    @Inject
+    private var theme: Theme
     
     // MARK: - Views
     lazy var moviesListView: UICollectionView = {
@@ -25,7 +28,7 @@ class MoviesListController: UIViewController, Alertable {
         collectionView.register(FavoritesMoviesCell.self)
         collectionView.register(MoviesHeaderview.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: "MoviesHeaderview")
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
@@ -38,17 +41,20 @@ class MoviesListController: UIViewController, Alertable {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = .bordered()
+        let theme = self.theme
         button.configurationUpdateHandler = { button in
             let isEnabled = button.isUserInteractionEnabled
             button.alpha = 1
-            button.configuration?.baseBackgroundColor = isEnabled ? .systemBlue : .init(named: "disabledColor")
-            button.configuration?.baseForegroundColor = isEnabled ? .white : .black.withAlphaComponent(0.35)
-            button.configuration?.contentInsets = .init(top: 12,
-                                                        leading: 120,
-                                                        bottom: 12,
-                                                        trailing: 120)
+            button.configuration?.baseBackgroundColor = isEnabled ? theme.color.primaryTint : theme.color.disableSurface
+            button.configuration?.baseForegroundColor = isEnabled ? theme.color.white : theme.color.disableContent
+            let horizontalInset = theme.dimension.base(15)
+            let verticalInset = theme.dimension.base(1.5)
+            button.configuration?.contentInsets = .init(top: verticalInset,
+                                                        leading: horizontalInset,
+                                                        bottom: verticalInset,
+                                                        trailing: horizontalInset)
             button.layer.borderWidth = 1
-            button.layer.cornerRadius = 8
+            button.layer.cornerRadius = theme.dimension.cornerRadius(1)
             button.configuration?.cornerStyle = .large
             button.layer.borderColor = UIColor.black.cgColor
         }
